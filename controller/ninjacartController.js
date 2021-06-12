@@ -23,7 +23,7 @@ module.exports = () =>{
 
     ninjacartApi.post('/qc_remarks',(req,res)=>{
         const merchant_number=req.body.merchant_number;
-        connection.query("SELECT qc_remark,created_on FROM ninjacart_leads WHERE merchant_number=? order by created_on desc limit 4; ",[merchant_number],(error,data)=>{
+        connection.query("SELECT qc_remark,created_on FROM ninjacart_leads WHERE merchant_number=? AND is_active=? order by created_on desc limit 4; ",[merchant_number,"0"],(error,data)=>{
             if(error){
                 console.log("Error while fetching QC Remarks",error)
             }else{
