@@ -6,6 +6,11 @@ const connection = mysql.createConnection({
     database: 'feedmypockets'
   });
 
+  connection.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected with mysql db!...");
+  });
+
 // connection.query(`SELECT  * FROM fse_lead WHERE lead_id=1`,(error,list)=>{
 //     if(error){
 //         console.log("error occured",error);
